@@ -66,7 +66,7 @@ namespace GameOfWar
                     return "Queen";
                 case 11:
                     return "King";
-                case 12:
+                default:
                     return "Ace";
             }
         }
