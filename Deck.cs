@@ -94,11 +94,9 @@ namespace GameOfWar
         // Create a public method PullAllCards that returns a list of all of the cards in the deck
         // and removes them all from the deck, leaving it empty
         public List<Card> PullAllCards() {
-            // iterate through every card, pull them, and add them to a list of pulled cards
-            List<Card> pulledCards = [];
-            for (int index = 0; index < this.Count; index++) {
-                pulledCards.Add(this.PullCardAtIndex(index));
-            }
+            // set the list of pull cards to the entire contents of _cards, then delete the contents of _cards
+            List<Card> pulledCards = this._cards;
+            this._cards = [];
             return pulledCards;
         }
 
