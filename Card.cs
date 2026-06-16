@@ -29,9 +29,14 @@ namespace GameOfWar
         }
 
         // Overload the > operator to compare two cards by rank
-
+        public static bool operator > (Card left, Card right) {
+            return left.Rank > right.Rank;
+        }
 
         // Overload the < operator to compare two cards by rank
+        public static bool operator < (Card left, Card right) {
+            return left.Rank < right.Rank;
+        }
 
 
         // Create a public string method RankString that returns a string representation of this card's rank, 2-10 and Jack, Queen, King, Ace
