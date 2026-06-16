@@ -43,7 +43,25 @@ namespace GameOfWar
         // Create a private void method called InitializeDeck() which does the following:
         // Use RankNames and Suits in nested loops to generate all 52 combinations of rank and suit and add them to _cards
         private void InitializeDeck() {
-            
+            // loop through every suit
+            foreach (string suit in Deck.Suits) {
+                // loop through every rank
+                foreach (string rankString in Deck.RankNames) {
+                    // add a new card of the appropriate suit and rank
+                    int rankInt;
+                    if (int.TryParse(rankString, out rankInt)) {
+                        this._cards.Add(new Card(suit, rankInt));
+                    } else if (rankString == "Jack") {
+                        this._cards.Add(new Card(suit, 9));
+                    } else if (rankString == "Queen") {
+                        this._cards.Add(new Card(suit, 10));
+                    } else if (rankString == "King") {
+                        this._cards.Add(new Card(suit, 11));
+                    } else if (rankString == "Ace") {
+                        this._cards.Add(new Card(suit, 12));
+                    }
+                }
+            }
         }
 
         // Create a public void method called Shuffle() which shuffles (rearranges) the cards in _cards
