@@ -108,5 +108,18 @@ namespace GameOfWar
         // and then removes that many cards from the deck, returning them as a List<Card>
         // Be sure to check the size of _cards against the number of cards requested so you don't go out
         // of bounds
+        public List<Card> Deal(int cardsDealt) {
+            // ensure cards are not dealt beyond to contents of _cards
+            if (cardsDealt > this.Count) {
+                return this.PullAllCards();
+            }
+
+            // pull cards from the top of the deck a number of times equal to cardsDealt, then return the list of dealt cards
+            List<Card> cards = [];
+            for (int i = 0; i < cardsDealt; i++) {
+                cards.Add(this.PullCardAtIndex(0));
+            }
+            return cards;
+        }
     }
 }
