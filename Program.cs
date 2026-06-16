@@ -4,7 +4,7 @@
 // Shuffle CardDeck within your instance
 // Deal 26 cards each from CardDeck to your instance's PlayerDeck and ComputerDeck
 GameState state = new GameState();
-// gameState.CardDeck.Shuffle();
+state.CardDeck.Shuffle();
 state.PlayerDeck.PushCards(state.CardDeck.Deal(26));
 state.ComputerDeck.PushCards(state.CardDeck.Deal(26));
 

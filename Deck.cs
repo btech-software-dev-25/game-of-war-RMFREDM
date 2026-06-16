@@ -65,7 +65,17 @@ namespace GameOfWar
         }
 
         // Create a public void method called Shuffle() which shuffles (rearranges) the cards in _cards
-
+        public void Shuffle() {
+            // randomly swap cards in the deck, iterating from the end of the deck to the front
+            Random rng = new Random();
+            for (int currentIndex = this.Count - 1; currentIndex > 0; currentIndex--) {
+                // get a random index at or below the current index and swap the cards at those positions
+                int indexToSwap = rng.Next(currentIndex + 1);
+                Card temporary = this._cards[indexToSwap];
+                this._cards[indexToSwap] = this._cards[currentIndex];
+                this._cards[currentIndex] = temporary;
+            }
+        }
 
         // Create a public method CardAtIndex which takes an int parameter for the index of a card and
         // returns the card at the index specified, or throws IndexOutOfRangeException if index is too large or too small
