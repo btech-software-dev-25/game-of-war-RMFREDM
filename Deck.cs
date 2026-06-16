@@ -50,15 +50,15 @@ namespace GameOfWar
                     // add a new card of the appropriate suit and rank
                     int rankInt;
                     if (int.TryParse(rankString, out rankInt)) {
-                        this._cards.Add(new Card(suit, rankInt));
+                        this.PushCard(new Card(suit, rankInt));
                     } else if (rankString == "Jack") {
-                        this._cards.Add(new Card(suit, 9));
+                        this.PushCard(new Card(suit, 9));
                     } else if (rankString == "Queen") {
-                        this._cards.Add(new Card(suit, 10));
+                        this.PushCard(new Card(suit, 10));
                     } else if (rankString == "King") {
-                        this._cards.Add(new Card(suit, 11));
+                        this.PushCard(new Card(suit, 11));
                     } else if (rankString == "Ace") {
-                        this._cards.Add(new Card(suit, 12));
+                        this.PushCard(new Card(suit, 12));
                     }
                 }
             }
@@ -69,22 +69,40 @@ namespace GameOfWar
 
         // Create a public method CardAtIndex which takes an int parameter for the index of a card and
         // returns the card at the index specified, or throws IndexOutOfRangeException if index is too large or too small
-
+        public Card CardAtIndex(int index) {
+            return this._cards[index];
+        }
 
         // Create a public method PullCardAtIndex which does exactly the same thing as CardAtIndex
         // with the additional feature that it _removes_ the card from the deck
-
+        public Card PullCardAtIndex(int index) {
+            Card pulledCard = _cards[index];
+            this._cards.RemoveAt(index);
+            return pulledCard;
+        }
 
         // Create a public method PullAllCards that returns a list of all of the cards in the deck
         // and removes them all from the deck, leaving it empty
+        public List<Card> PullAllCards() {
+            // iterate through every card, pull them, and add them to a list of pulled cards
+            List<Card> pulledCards = [];
+            for (int index = 0; index < this.Count; index++) {
+                pulledCards.Add(this.PullCardAtIndex(index));
+            }
+            return pulledCards;
+        }
 
 
         // Create a public method PushCard that accepts a Card as a parameter and adds it to _cards
-
+        public void PushCard(Card card) {
+            this._cards.Add(card);
+        }
 
         // Create a public method PushCards that accepts a List<Card> as a parameter and adds the list to _cards
         // Be sure to use AddRange and not Add
-
+        public void PushCards(List<Card> cards) {
+            this._cards.AddRange(cards);
+        }
 
         // Create a public method Deal that accepts an integer representing the number of cards to deal
         // and then removes that many cards from the deck, returning them as a List<Card>
