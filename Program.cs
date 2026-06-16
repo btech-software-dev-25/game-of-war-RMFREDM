@@ -3,7 +3,10 @@
 // Create an instance of the GameState class
 // Shuffle CardDeck within your instance
 // Deal 26 cards each from CardDeck to your instance's PlayerDeck and ComputerDeck
-
+GameState state = new GameState();
+// gameState.CardDeck.Shuffle();
+state.PlayerDeck.PushCards(state.CardDeck.Deal(26));
+state.ComputerDeck.PushCards(state.CardDeck.Deal(26));
 
 // Create a function with the signature: static bool PlayCards(GameState state, int playerCardIndex)
 // The function should:
@@ -17,6 +20,9 @@
 //         If the computer deck is empty, the player wins and state.Winner should be set to "Computer"
 //         If the player deck is empty, the computer wins and state.Winner should be set to "Player"
 //     return true
+static bool PlayCards(GameState state, int playerCardIndex) {
 
+}
 
 // Call Lib.RunGame(), passing two parameters: the state object you instantiated above and the name of your PlayCards function
+// Lib.RunGame(state, PlayCards);
