@@ -50,7 +50,7 @@ namespace GameOfWar
                     // add a new card of the appropriate suit and rank
                     int rankInt;
                     if (int.TryParse(rankString, out rankInt)) {
-                        this.PushCard(new Card(suit, rankInt));
+                        this.PushCard(new Card(suit, rankInt - 2));
                     } else if (rankString == "Jack") {
                         this.PushCard(new Card(suit, 9));
                     } else if (rankString == "Queen") {
