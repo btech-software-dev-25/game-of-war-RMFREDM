@@ -27,10 +27,10 @@ static bool PlayCards(GameState state, int playerCardIndex) {
 
     // compare the cards and perform the appropriate action
     if (playerCard > computerCard) {
-        state.PlayerDeck.PushCard(computerCard);
+        state.PlayerDeck.PushCards([playerCard, computerCard]);
         state.PlayerDeck.PushCards(state.TableDeck.PullAllCards());
     } else if (playerCard < computerCard) {
-        state.ComputerDeck.PushCard(playerCard);
+        state.ComputerDeck.PushCards([playerCard, computerCard]);
         state.ComputerDeck.PushCards(state.TableDeck.PullAllCards());
     } else {
         state.TableDeck.PushCards([playerCard, computerCard]);
